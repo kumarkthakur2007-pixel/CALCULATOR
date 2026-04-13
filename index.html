@@ -4,10 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SUTRIX — The World of Mathematicians</title>
-<link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiU1VUUklYIiwic2hvcnRfbmFtZSI6IlNVVFJJWCIsInN0YXJ0X3VybCI6Ii4iLCJkaXNwbGF5Ijoic3RhbmRhbG9uZSIsImJhY2tncm91bmRfY29sb3IiOiIjMDgwQzE0IiwidGhlbWVfY29sb3IiOiIjMDZCNkQ0IiwiaWNvbnMiOlt7InNyYyI6ImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjJaWEp6YVc5dVBTSXhMakVpSUhkeVpXeHdkWFFnSWpFd01DNHhNQ0lnZEdWNGRDMWhibU5vYjNJOUlqRXdNQ0lnWm1sc2JEMGlJekEzTmpFM056Y2lQanhxWldGc0lHOW1abk5sZEQwaU1DNHdJaUJqWVdOb1FXTm1QU0l3TGpBaUlITjBZWFJwWTJGMFBTSXdJaUI0YVcxd2IzSjBQU0l3SWlCNWFXNTBQU0l3SWk4K1BIQm9iM1J2Y0hRZ1kyeHZZV1E5SWlNd05rSXhSak5FSWk4K1BIQmxZV1FnWTJ4MVpXUTlJalV3SWlCa1pXWm5kR2d0WTNWM2JIVnRhVzVoZEdVdFlYQWlMbVJoZEdFdlltRmpheThpUGp3dmNHaHZkRzl3ZEQ0OEwycGxZV3crUEhSbGVIUWdZM1E5SWpVaUlHUXRZV3hwWTJVOUlqWWlJR2MrUEhSbGVIUWdZM1E5SWpFd01pSWdaQzFoYkdsalpUMGlNaUlnWnlCa1pXWm5kR2d0WTNWM2JIVnRhVzVoZEdVdFpHOHVZM1ZzWVM1d2IyeDVMbkpsWkY4cU1UWXVNVFppT2pVd09pNXdMakF1TUNJdlBqd3ZkR1Y0ZEQ0OEwzTjJaejQ9IiwidHlwZSI6ImltYWdlL3N2Zyt4bWwiLCJzaXplcyI6IjE5MngxOTIifV19">
+<link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#06B6D4">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="SUTRIX">
+<link rel="apple-touch-icon" href="icon-192.png">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
@@ -2130,6 +2133,15 @@ if('serviceWorker' in navigator){
   const blob=new Blob([swCode],{type:'application/javascript'});
   const url=URL.createObjectURL(blob);
   navigator.serviceWorker.register(url).catch(()=>{});
+}
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then(reg => console.log('[SUTRIX] SW registered ✓', reg.scope))
+      .catch(err => console.error('[SUTRIX] SW failed:', err));
+  });
 }
 </script>
 </body>
